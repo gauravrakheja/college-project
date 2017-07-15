@@ -1,4 +1,6 @@
 class BooksController < ApplicationController
+	before_action :set_article, only: [:edit, :update, :show, :destroy]
+
 	def new
 		@book = Book.new
 	end
@@ -18,15 +20,12 @@ class BooksController < ApplicationController
 	end
 
 	def show 
-		@book = Book.find(params[:id])
 	end
 
 	def edit
-		@book = Book.find(params[:id])
 	end
 
 	def update(book_params)
-		@book = Book.find(params[:id])
 		if @book.update(book_params)
 			flash[:notice] = "The Book was successfully updated"
 			redirect_to book_path(@book)
@@ -36,13 +35,17 @@ class BooksController < ApplicationController
 	end
 
 	def destroy
-		@book = Book.find(params[:id])
 		@book.destroy
 		flash[:notice] = "The book was successfully deleted"
 		redirect_to books_path
 	end
 
 	private
+
+		def set_article
+			@article = Article.find(params[:id])
+		end
+
 		def book_params
 			params.require(:book).permit(:name, :author, :publication, :description)
 		end
