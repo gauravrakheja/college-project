@@ -6,29 +6,49 @@
 <% end %>
 </ul>
 <% end %>
-<%= form_for @book do |f| %>
-	<p>
-	<%= f.label :name %><br/>
-	
-	<%= f.text_field :name %>
-	</p>
-	<p>
-	<%= f.label :author %><br/>
-	
-	<%= f.text_field :author %>
-	</p>
-	<p>
-	<%= f.label :publication %><br/>
-	
-	<%= f.text_field :publication %>
-	</p>
-	<p>
-	<%= f.label :description %><br/>
-	
-	<%= f.text_area :description %>
-	</p>
-	<p>
-	<%= f.submit %>
-	</p>
-<% end %>
-<%= link_to "Back to Books listing", books_path %>
+<div class="row">
+	<div class="col-xs-12">
+		<%= form_for(@book, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+			<div class="form-group">
+				<div class="control-label col-sm-2">
+					<%= f.label :name %>
+				</div>
+				<div class="col-sm-8">
+					<%= f.text_field :name,  class: "form-control",placeholder: "Name Of The Book", autofocus: true  %>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="control-label col-sm-2" 
+					<%= f.label :author%>
+				</div>
+				<div class="col-sm-8">
+					<%= f.text_field :author, class: "form-control", placeholder: "Name Of The Author" %>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="control-label col-sm-2">
+					<%= f.label :publication %>
+				</div>
+				<div class="col-sm-8">
+					<%= f.text_field :publication, class: "form-control", placeholder: "Name Of The publication" %>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="control-label col-sm-2">
+					<%= f.label :description %>
+				</div>
+				<div class="col-sm-8">
+					<%= f.text_area :description, rows: 10, class: "form-control", placeholder: "Description" %>
+				</div>
+			</div>
+			<div class="form-group">
+			<div class="col-sm-offset-5 col-sm-10">
+				<%= f.submit %>
+			</div>
+		</div>
+		<% end %>
+		<div class="col-xs-4 col-xs-offset-0">
+			<%= link_to "Back to Books listing", books_path %>
+		</div>
+	</div>
+</div>

@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-	before_action :set_article, only: [:edit, :update, :show, :destroy]
+	before_action :set_book, only: [:edit, :update, :show, :destroy]
 
 	def new
 		@book = Book.new
@@ -42,8 +42,8 @@ class BooksController < ApplicationController
 
 	private
 
-		def set_article
-			@article = Article.find(params[:id])
+		def set_book
+			@book = Book.find(params[:id])
 		end
 
 		def book_params
