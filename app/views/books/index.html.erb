@@ -7,7 +7,12 @@
 					<%= link_to book.name, book_path(book) %>
 				</div>
 				<div class="book body">
-					<%= truncate(book.description, length: 100) %>
+					<%= truncate(book.description, length: 100) %><br />
+					<% if book.user %>
+						<small>Currently borrowed-by: <%= book.user.username%></small>
+					<% else %>
+						<small>Available</small>
+					<% end %>
 				</div>
 				<div class="book-actions">
 					<%= link_to "Edit this book", edit_book_path(book), class: "btn btn-xs btn-primary" %>
