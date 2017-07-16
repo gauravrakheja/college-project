@@ -1,11 +1,4 @@
-<% if @book.errors.any? %>
-<h2>The following errors prevented the article from getting created</h2>
-<ul>
-<% @book.errors.full_messages.each do |msg| %>
-<li><%= msg %></li>
-<% end %>
-</ul>
-<% end %>
+<%= render 'shared/errors', obj: @book %>
 <div class="row">
 	<div class="col-xs-12">
 		<%= form_for(@book, :html => {class: "form-horizontal", role: "form"}) do |f| %>
