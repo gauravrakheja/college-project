@@ -3,4 +3,6 @@ Rails.application.routes.draw do
   resources :books 	
   root 'pages#home'
   get 'pages/about' => 'pages#about'
+  get 'signup' => 'users#new'
+  resources :users, except: [:new]
 end
