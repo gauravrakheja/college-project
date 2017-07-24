@@ -1,5 +1,6 @@
 class BooksController < ApplicationController
 	before_action :set_book, only: [:edit, :update, :show, :destroy]
+	before_action :require_same_user, only: [:edit, :update, :destroy]
 
 	def new
 		@book = Book.new

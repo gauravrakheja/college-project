@@ -1,10 +1,10 @@
 <h1 align="center">Welcome to <%= @user.username %>'s page </h1>
-<h2 align="center">Roll number: <%= @user.roll_number>
+<h2 align="center">Roll number: <%= @user.roll_number %></h2>
 <h4 align="center"><%= @user.username %>'s books </h4>
 <div class="center">
-	<%= will_paginate @user_articles %>
+	<%= will_paginate @user_books %>
 </div>
 <%= render 'books/book', obj: @user.books %> 
 <div class="center">
-	<%= will_paginate @user_articles %>
+	<%= will_paginate @user_books %>
 </div>
