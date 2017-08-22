@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   get 'pages/about' => 'pages#about'
   get 'signup' => 'users#new'
   resources :users, except: [:new]
+  resources :borrows, except: [:new]
 end

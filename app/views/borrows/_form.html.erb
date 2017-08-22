@@ -1,0 +1,5 @@
+<%= form_for Borrow.new do |f| %>
+	<%= f.hidden_field :user_id, value:current_user.id %>
+	<%= f.hidden_field :book_id, value:book.id %>
+	<%= f.submit  "borrow book", class: "btn btn-warning btn-xs" %>
+<% end %> 
