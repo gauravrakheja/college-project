@@ -1,6 +1,7 @@
 class BorrowsController < ApplicationController
 
 	def index
+		require_admin
 		@borrows = Borrow.all
 	end
 
@@ -8,9 +9,10 @@ class BorrowsController < ApplicationController
 		@borrow = Borrow.new(borrows_params)
 		if @borrow.save
 			flash[:success] = "Thank you for borrowing the book"
+			redirect_to books_path
 		else 
 			flash[:danger] = "There was an error in adding the book to your account"
-			rendirect_to :back
+			redirect_to books_path
 		end
 	end
 

@@ -1,6 +1,5 @@
 class BooksController < ApplicationController
 	before_action :set_book, only: [:edit, :update, :show, :destroy]
-	before_action :require_same_user, only: [:edit, :update, :destroy]
 
 	def new
 		@book = Book.new
@@ -43,12 +42,12 @@ class BooksController < ApplicationController
 
 	private
 
-		def set_book
-			@book = Book.find(params[:id])
-		end
+	def set_book
+		@book = Book.find(params[:id])
+	end
 
-		def book_params
-			params.require(:book).permit(:name, :author, :publication, :description)
-		end
+	def book_params
+		params.require(:book).permit(:name, :author, :publication, :description)
+	end
 
 end
