@@ -32,6 +32,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'rspec-rails'
 gem 'shoulda'
 gem 'rails-controller-testing'
+gem 'pry'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
