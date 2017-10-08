@@ -1,6 +1,8 @@
 <h1>All Registered Library Users</h1>
 <div class="collection">
 <% @users.each do |user| %>
-  <%= link_to user.username, user_path(user), class: "collection-item" %>
+	<% unless user.admin? %>
+  	<%= link_to user.username, user_path(user), class: "collection-item" %>
+  <% end %>
 <% end %>
 </div>
