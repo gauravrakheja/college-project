@@ -1,33 +1,32 @@
 <% obj.each do |book| %>
 	<div class ="row">
-		<div class="col-xs-8 col-xs-offset-2">
-			<div class="well well-lg">
-				<div class="book-name">
-					<%= link_to book.name, book_path(book) %>
-				</div>
-				<div class="book body">
-					<%= truncate(book.description, length: 100) %><br />
-				</div>
-				<small>
-				<% if book.users %>
-					<% book.users.each do |user| %>
-						<span>Book currently borrowed by <strong><%= user.username %></strong></span>
-					<% end %>
-				<% else %>
-				  <span>available</span>
-				<% end %>
-				</small>
-				<div class="book-actions">
-					<% if admin? %>
-						<%= link_to "Edit this book", edit_book_path(book), class: "btn btn-xs btn-primary" %><br/><br/>
-						
-						<%= link_to "Delete this book", book_path(book), method: :delete, data: { confirm: "Are you sure you want to delete this book?"}, class: "btn btn-xs btn-danger" %><br/><br/>
-					<% end %>
+		<div class="col s12 m6">
+			<div class="card blue-grey darken-1  hoverable">
 					<% if current_user %>
 						<% if book.users.empty? %>
 							<%= render "borrows/form", book:  book %><br/>
 						<% end %>
-					<% end %>	
+					<% end %>
+				<div class="card-content white-text">
+					<span class="card-title"><%= link_to book.name, book_path(book) %></span>
+					<p>
+						<%= truncate(book.description, length: 100) %><br/>
+						<small>
+							<% if !book.users.empty? %>
+								<% book.users.each do |user| %>
+									<span>Book currently borrowed by <strong><%= user.username %></strong></span>
+								<% end %>
+							<% else %>
+							  <span>Available</span>
+							<% end %>
+						</small>
+					</p>
+				</div>
+				<div class="card-action">
+					<% if admin? %>
+						<%= link_to "Edit this book", edit_book_path(book)%>
+						<%= link_to "Delete this book", book_path(book), method: :delete, data: { confirm: "Are you sure you want to delete this book?"} %>
+					<% end %>
 				</div>
 			</div>
 		</div>

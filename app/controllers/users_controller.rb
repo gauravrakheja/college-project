@@ -11,7 +11,8 @@ class UsersController < ApplicationController
 			flash[:success] = "Welcome to the Library #{@user.username}"
 			redirect_to books_path 
 		else
-			render 'new'
+			flash[:danger] = "#{@user.errors.messages}"
+ 			render 'new'
 		end
 	end
 
@@ -23,6 +24,7 @@ class UsersController < ApplicationController
 			flash[:success] = "Your account was updates successfully"
 			redirect_to books_path
 		else
+			flash[:danger] = "#{@user.errors.messages}"
 			render  'edit'
 		end
 	end	

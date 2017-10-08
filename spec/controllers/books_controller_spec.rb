@@ -24,10 +24,12 @@ RSpec.describe BooksController do
 
 	describe 'create' do
 		describe 'valid params' do
-			let(:book) { {name: "test book", description: "Test description for test book"}}
+			let(:book) { attributes_for(:book) }
 
-			it 'should save the book and show flash mssage' do
+			it 'should save the book' do
 				post :create, params: { book: book }
+				book2 = Book.find_by_name(book[:name])
+				expect(response).to redirect_to(book_path(book2))
 			end
 		end
 
@@ -53,8 +55,9 @@ RSpec.describe BooksController do
 		describe 'valid params' do
 			let!(:book) { Book.create!(name: "test book", id: 10, author: "something", publication: "skyward", description: "Test description for test book") }
 			
-			it 'should save the book and show flash message' do
+			it 'should save the book' do
 				post :update, :params => {id: book.id, book: { name: "new name"}}
+				expect(response).to redirect_to(book_path(book))
 			end
 		end
 
@@ -65,6 +68,21 @@ RSpec.describe BooksController do
 				post :update, params: {id: book.id,book: { name: "a"} }
 				expect(response).to render_template("edit")
 			end
+		end
+	end
+
+	describe 'destroy' do
+		let(:book) { create(:book) }
+
+		it 'should find the book' do
+			put :destroy, params: { id: book.id }
+			expect(assigns(:book)).to eq(book)
+		end
+
+		it 'should show flash message and redirect to books path' do
+			put :destroy, params: { id: book.id }
+			expect(flash[:success]).to be_present
+			expect(response).to redirect_to(books_path)
 		end
 	end
 end

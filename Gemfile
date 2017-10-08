@@ -16,6 +16,7 @@ gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
+gem 'faker', :git => 'git://github.com/stympy/faker.git', :branch => 'master'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -33,6 +34,8 @@ gem 'rspec-rails'
 gem 'shoulda'
 gem 'rails-controller-testing'
 gem 'pry'
+gem 'factory_girl_rails'
+gem 'materialize-sass'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password

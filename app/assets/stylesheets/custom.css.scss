@@ -1,6 +1,24 @@
 $navbar-default-bg: #d9b38c;
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "materialize/components/color";
+$primary-color: color("blue", "lighten-2") !default;
+@import "materialize";
+
+.inline{
+	display:inline;
+}
+
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
 
 .jumbotron {
 
@@ -12,6 +30,12 @@ height: 800px;
 
 width: 100%;
 
+}
+
+.card-title{
+	a{
+		color: white;
+	}
 }
 
 .jumbotron h1 {

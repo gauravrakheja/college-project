@@ -21,10 +21,12 @@ class BorrowsController < ApplicationController
 	end
 
 	def update
-		if @book.update(book_params)
-			flash[:success] = "The Book was successfully updated"
-			redirect_to book_path(@book)
+		@borrow = Borrow.find(params[:id])
+		if @borrow.update(borrows_params)
+			flash[:success] = "The Borrow was successfully updated"
+			redirect_to books_path
 		else
+			flash[:danger] = "There was an error"
 			render 'edit'
 		end
 	end

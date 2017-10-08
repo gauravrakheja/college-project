@@ -1,2 +1,4 @@
 <h1 align="center">Welcome to <%= @user.username %>'s page </h1>
 <h2 align="center">Roll number: <%= @user.roll_number %></h2>
+<h5>Books currently borrowed </h5>
+<%= render 'books/book', obj: @user.books %>

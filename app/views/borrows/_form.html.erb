@@ -1,5 +1,7 @@
-<%= form_for Borrow.new do |f| %>
+<%= form_for Borrow.new, html: {class: 'inline'} do |f| %>
 	<%= f.hidden_field :user_id, value:current_user.id %>
 	<%= f.hidden_field :book_id, value:book.id %>
-	<%= f.submit  "borrow book", class: "btn btn-warning btn-xs" %>
+	<%= f.button :submit, class: 'waves-effect waves-light btn pulse' do %>
+		  <i class="material-icons left">add</i>Borrow
+	<% end %>
 <% end %> 

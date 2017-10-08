@@ -1,23 +1,16 @@
-<div class="well">
-	<h1 align="center">Index of borrowed Books</h1>
-	<table class="table table-bordered">
-		<thead>
-			<tr>
-				<th>Book</th>
-				<th>Student</th>
-				<th>Borrowed on</th>
-				<th>Return Book</th>
-			</tr>
-		</thead>
-		<tbody>
-			<% @borrows.each do |b| %>
-				<tr>
-					<td><%=link_to "#{b.book.name}", book_path(b.book_id) %></td>
-					<td><%=link_to "#{b.user.username}", user_path(b.user_id) %></td>
-					<td><strong><%= b.created_at.strftime("%m/%d/%Y") %></strong></td>
-					<td><%= link_to "Book received", borrow_path(b), method: :delete, class: "btn btn-xs btn-default" %></td>
-				</tr>
-			<% end %>
-		</tbody>
-	</table>
-</div>
+<h1 align="center">Index of borrowed Books</h1>
+<ul class="collection">
+	<% @borrows.each do |b| %>
+		<li class="collection-item avatar">
+			<i class="material-icons circle">book</i>
+		<p>
+			Book: <%=link_to "#{b.book.name}", book_path(b.book_id) %><br/>
+			Student: <%=link_to "#{b.user.username}", user_path(b.user_id) %><br/>
+			Borrowed on: <strong><%= b.created_at.strftime("%m/%d/%Y") %></strong>
+		</p>
+		<%= link_to borrow_path(b), method: :delete, class: "secondary-content" do %>
+			<i class="material-icons right">offline_pin</i>Received
+		<% end %>
+		</li>
+	<% end %>
+</ul>
