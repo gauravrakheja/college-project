@@ -1,4 +1,8 @@
 <h1 align="center">Index of borrowed Books</h1>
+<%= form_tag borrows_path, method: 'get' do %>
+	<%= text_field_tag :search, params[:search]%>
+	<%= submit_tag 'Search', name: nil, class: 'btn waves-effect waves-light' %>
+<% end %>
 <ul class="collection">
 	<% @borrows.each do |b| %>
 		<li class="collection-item avatar">

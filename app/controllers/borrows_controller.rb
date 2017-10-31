@@ -2,7 +2,7 @@ class BorrowsController < ApplicationController
 
 	def index
 		require_admin
-		@borrows = Borrow.all
+		@borrows = Borrow.search(params[:search])
 	end
 
 	def create
