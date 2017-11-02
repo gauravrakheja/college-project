@@ -3,6 +3,9 @@ class BorrowsController < ApplicationController
 	def index
 		require_admin
 		@borrows = Borrow.search(params[:search])
+		if @borrows.try(:empty?)
+			render 'shared/_not_found' and return
+		end
 	end
 
 	def create
