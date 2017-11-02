@@ -6,7 +6,7 @@ class Borrow < ApplicationRecord
 
   def self.search(search)
   	if search
-  		joins(:user, :book).where('users.username LIKE ? or books.name LIKE ?', "#{search}", "#{search}")
+  		joins(:user, :book).where('users.username LIKE ? or books.name LIKE ?', "%#{search}%", "%#{search}%")
   	else
   		all
   	end
