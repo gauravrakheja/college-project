@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   delete 'logout' => 'sessions#destroy'
   get 'pages/about' => 'pages#about'
   get 'signup' => 'users#new'
+  get 'not_found' => 'pages#notfound'
   resources :users, except: [:new]
   resources :borrows, except: [:new]
 end

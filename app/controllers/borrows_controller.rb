@@ -3,8 +3,8 @@ class BorrowsController < ApplicationController
 	def index
 		require_admin
 		@borrows = Borrow.search(params[:search])
-		if @borrows.try(:empty?)
-			render 'shared/_not_found' and return
+		if @borrows.empty?
+			redirect_to not_found_path and return
 		end
 	end
 
